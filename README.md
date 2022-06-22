@@ -57,8 +57,10 @@ quicksilverd status 2>&1 | jq .SyncInfo
 ```
 
 ### Cüzdan oluştur
-Yeni cüzdan oluşturup katılamayacağınız için yeni cüzdan oluşturmayı paylaşmıyorum. Gentx formunu doldururken vermiş olduğunuz cüzdanınızı mnemoniclerinizi kullanarak recover etmelisiniz..
-
+Yeni cüzdan oluşturmak için aşağıdaki komutu kullanabilirsiniz. Hatırlatıcıyı kaydetmeyi unutmayın
+```
+quicksilverd keys add $WALLET
+```
 Cüzdanınızı menmoniclerinizi kullanarak kurtarmak için
 ```
 quicksilverd keys add $WALLET --recover
