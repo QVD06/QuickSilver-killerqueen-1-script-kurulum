@@ -1,0 +1,1 @@
+# QuickSilver-killerqueen-1-script-kurulum
