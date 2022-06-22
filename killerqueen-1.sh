@@ -32,7 +32,7 @@ echo '================================================='
 echo -e "Node isminiz  : \e[1m\e[32m$NODENAME\e[0m"
 echo -e "Cüzdan isminiz: \e[1m\e[32m$WALLET\e[0m"
 echo -e "Ağ adı        : \e[1m\e[32m$QUICKSILVER_CHAIN_ID\e[0m"
-echo -e "Your port: \e[1m\e[32m$QUICKSILVER_PORT\e[0m"
+echo -e "Port          : \e[1m\e[32m$QUICKSILVER_PORT\e[0m"
 echo '================================================='
 sleep 2
 
@@ -58,7 +58,7 @@ go version
 echo -e "\e[1m\e[32m3. İkili dosyalar indiriliyor ve oluşturuluyor... \e[0m" && sleep 1
 # download binary
 cd $HOME
-git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.3.0
+git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.4.0
 cd quicksilver
 make build
 sudo chmod +x ./build/quicksilverd && sudo mv ./build/quicksilverd /usr/local/bin/quicksilverd
@@ -76,7 +76,7 @@ wget -qO $HOME/.quicksilverd/config/genesis.json "https://raw.githubusercontent.
 
 # set peers and seeds
 SEEDS="dd3460ec11f78b4a7c4336f22a356fe00805ab64@seed.killerqueen-1.quicksilver.zone:26656"
-PEERS="b281289df37c5180f9ff278be5e29964afa0c229@185.56.139.84:26656"
+PEERS=""
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.quicksilverd/config/config.toml
 
 # set custom ports
@@ -130,5 +130,5 @@ sudo systemctl enable quicksilverd
 sudo systemctl restart quicksilverd
 
 echo '=============== KURULUM TAMAMLANDI ==================='
-echo -e 'Loglarınızı Kontrol Edin: \e[1m\e[32mjournalctl -u quicksilverd -f -o cat\e[0m'
+echo -e 'Loglarınızı Kontrol Edin            : \e[1m\e[32mjournalctl -u quicksilverd -f -o cat\e[0m'
 echo -e "Senkronizasyon Durumunu Kontrol Edin: \e[1m\e[32mcurl -s localhost:${QUICKSILVER_PORT}657/status | jq .result.sync_info\e[0m"
